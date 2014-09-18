@@ -52,18 +52,18 @@ var Player = enchant.Class.create(enchant.Sprite, {
 
         game.rootScene.addEventListener('touchstart', function (e) {
             player.x = e.x - player.width/2;
-	    player.y = e.y - player.height/2;
+	    player.y = e.y - player.height;
 	    game.touched = true;
         });
 
 	game.rootScene.addEventListener('touchmove', function (e) {
             player.x = e.x - player.width/2;
-	    player.y = e.y - player.height/2;
+	    player.y = e.y - player.height;
         });
 
 	game.rootScene.addEventListener('touchend', function (e) {
             player.x = e.x - player.width/2;
-	    player.y = e.y - player.height/2;
+	    player.y = e.y - player.height;
             game.touched = false;
         });
 
@@ -247,7 +247,7 @@ var changeToGameOverScene = function() {
     tweetButton.addEventListener(enchant.Event.TOUCH_START, function(){
         var EUC = encodeURIComponent;
         var twitter_url = "http://twitter.com/?status=";
-        var message = "PLAYED PON-SHOOTING!\nSCORE:" + game.score + " #PON_SHOOTING";
+        var message = "PLAYED PON-SHOOTING!\nSCORE:" + game.score + " #PON_SHOOTING2";
         location.href = twitter_url+ EUC(message);
     });
     scene.addChild(tweetButton);
