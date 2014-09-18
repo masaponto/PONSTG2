@@ -202,7 +202,6 @@ var EnemyShoot = enchant.Class.create(Shoot, {
 	this.addEventListener('enterframe', function () {
 	    if(player.within(this, 8)) {
                 explo = new Explotion(player.x, player.y);
-		//game.end(game.score, "SCORE: " + game.score);
 		changeToGameOverScene();
 	    }
         });
@@ -242,7 +241,6 @@ var changeToGameOverScene = function() {
     gameOverSprite.image = game.assets['end.png'];
     gameOverSprite.moveTo((scene.width - gameOverSprite.width)/2, (scene.height - gameOverSprite.height)/2);
     scene.addChild( gameOverSprite);
-
 
     var tweetButton = new Button("Tweet", "blue");
     tweetButton.moveTo( scene.width / 2 - 30, (scene.height - gameOverSprite.height)/2 + 120);
