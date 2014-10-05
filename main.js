@@ -26,8 +26,27 @@ window.onload = function () {
                 enemy.key = game.frame;
                 enemies[game.frame] = enemy;
             }
-            scoreLabel.score = game.score;
+
+	    scoreLabel.score = game.score;
         });
+
+	game.rootScene.addEventListener('touchstart', function (e) {
+            player.x = e.x - player.width/2;
+	    player.y = e.y - player.height;
+	    game.touched = true;
+        });
+
+	game.rootScene.addEventListener('touchmove', function (e) {
+            player.x = e.x - player.width/2;
+	    player.y = e.y - player.height;
+        });
+
+	game.rootScene.addEventListener('touchend', function (e) {
+            player.x = e.x - player.width/2;
+	    player.y = e.y - player.height;
+            game.touched = false;
+        });
+
 
         game.rootScene.addChild(scoreLabel);
     };
@@ -49,24 +68,6 @@ var Player = enchant.Class.create(enchant.Sprite, {
         this.x = x;
         this.y = y;
         this.frame = 0;
-
-        game.rootScene.addEventListener('touchstart', function (e) {
-            player.x = e.x - player.width/2;
-	    player.y = e.y - player.height;
-	    game.touched = true;
-        });
-
-	game.rootScene.addEventListener('touchmove', function (e) {
-            player.x = e.x - player.width/2;
-	    player.y = e.y - player.height;
-        });
-
-	game.rootScene.addEventListener('touchend', function (e) {
-            player.x = e.x - player.width/2;
-	    player.y = e.y - player.height;
-            game.touched = false;
-        });
-
 
         this.addEventListener('enterframe', function () {
             if(game.touched && game.frame % 8 == 0) {
